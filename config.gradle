@@ -1,0 +1,44 @@
+ext {
+    android = [
+            compileSdkVersion: 26,
+            buildToolsVersion: '27.0.3',
+            minSdkVersion    : 15,
+            targetSdkVersion : 26
+    ]
+    supportVersion = "26.1.0"
+    constraintVersion = "1.0.2"
+
+    supportLib = [
+            "constraint-layout": "com.android.support.constraint:constraint-layout:${constraintVersion}",
+            "appcompat-v7"     : "com.android.support:appcompat-v7:${supportVersion}",
+            "cardview-v7"      : "com.android.support:cardview-v7:${supportVersion}",
+            "design"           : "com.android.support:design:${supportVersion}",
+            "support-v4"       : "com.android.support:support-v4:${supportVersion}"
+    ]
+
+    dependencies = [
+            "multidex"                     : 'com.android.support:multidex:1.0.1',
+            "rxlifecycle"                  : 'com.trello:rxlifecycle-components:0.6.1',
+            "butterknife"                  : 'com.jakewharton:butterknife:8.8.1',
+            "butterknife-compiler"         : 'com.jakewharton:butterknife-compiler:8.5.1',
+//            "BaseRecyclerViewAdapterHelper": 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30',
+            "logger"                       : 'com.orhanobut:logger:1.15',
+            "sonic"                        : 'com.tencent.sonic:sdk:2.0.0',//秒开的浏览器 qq空间
+            "sldinglayout"                 : 'homhomlin.lib:sldinglayout:0.9.0',
+
+            "easypermissions"              : 'pub.devrel:easypermissions:1.1.1',    //动态权限申请
+            "flycotabLayout"               : 'com.flyco.tablayout:FlycoTabLayout_Lib:2.0.0@aar',
+            "bga-qrcodecore"               : 'cn.bingoogolapple:bga-qrcodecore:1.1.7@aar',
+            "bga-zbar"                     : 'cn.bingoogolapple:bga-zbar:1.1.7@aar',
+            "zxing"                        : 'com.google.zxing:core:3.2.1',
+            "bga-zxing"                    : 'cn.bingoogolapple:bga-zxing:1.1.7@aar',
+            "novate"                       : 'com.tamic.novate:novate:1.5.3',    //基于Retrofit和RxJava打造的链式网络库, 支持okhttp的调用风格，又兼容Retrofit API，并支持rxJava链式操作
+            "stickyheadersrecyclerview"    : 'com.timehop.stickyheadersrecyclerview:library:0.4.3@aar',
+            "glide"                        : 'com.github.bumptech.glide:glide:3.7.0',
+            "banner"                       : 'com.youth.banner:banner:1.4.10',
+            "statusbarutil"                : 'com.jaeger.statusbarutil:library:1.4.0',
+            "Luban"                        : 'top.zibin:Luban:1.1.3',
+            "swipebacklayout"              : 'cn.bingoogolapple:bga-swipebacklayout:1.1.8@aar'
+    ]
+
+}
