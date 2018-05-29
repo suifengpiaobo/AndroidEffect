@@ -19,9 +19,9 @@ ext {
     dependencies = [
             "multidex"                     : 'com.android.support:multidex:1.0.1',
             "rxlifecycle"                  : 'com.trello:rxlifecycle-components:0.6.1',
-            "butterknife"                  : 'com.jakewharton:butterknife:8.8.1',
-            "butterknife-compiler"         : 'com.jakewharton:butterknife-compiler:8.5.1',
-//            "BaseRecyclerViewAdapterHelper": 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30',
+            "butterknife"                  : 'com.jakewharton:butterknife:8.4.0',
+            "butterknife-compiler"         : 'com.jakewharton:butterknife-compiler:8.4.0',
+            "BaseRecyclerViewAdapterHelper": 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30',
             "logger"                       : 'com.orhanobut:logger:1.15',
             "sonic"                        : 'com.tencent.sonic:sdk:2.0.0',//秒开的浏览器 qq空间
             "sldinglayout"                 : 'homhomlin.lib:sldinglayout:0.9.0',

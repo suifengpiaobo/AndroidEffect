@@ -1,5 +1,8 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.jakewharton.butterknife'
 def cfg = rootProject.ext.android
+def librarys = rootProject.ext.dependencies
+def supportLibrary = rootProject.ext.supportLib
 
 android {
     compileSdkVersion cfg.compileSdkVersion
@@ -26,4 +29,7 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+
+    supportLibrary.each { k, v -> compile v }
+    librarys.each { k, v -> compile v }
 }
