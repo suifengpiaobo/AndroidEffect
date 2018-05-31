@@ -8,10 +8,9 @@ import android.widget.TextView;
 import com.zxl.baselib.base.BaseActivity;
 import com.zxl.baselib.base.BasePresenter;
 import com.zxl.baselib.utils.ToastUtils;
-import com.zxl.effect.circle.FriendCircleActivity;
+import com.zxl.effect.friendcircle.FriendCircleActivity;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainActivity extends BaseActivity {

@@ -32,4 +32,5 @@ dependencies {
 
     supportLibrary.each { k, v -> compile v }
     librarys.each { k, v -> compile v }
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.7.1'
 }
