@@ -3,17 +3,22 @@ package com.zxl.effect;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.View;
 import android.widget.TextView;
 
 import com.zxl.baselib.base.BaseActivity;
 import com.zxl.baselib.base.BasePresenter;
 import com.zxl.baselib.utils.ToastUtils;
 import com.zxl.effect.friendcircle.FriendCircleActivity;
+import com.zxl.effect.screenshot.ScreenShotActivity;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainActivity extends BaseActivity {
+    @BindView(R.id.screen_shot)
+    TextView screenShot;
     private long exitTime;
     @BindView(R.id.friend_circle)
     TextView friendCircle;
@@ -43,10 +48,20 @@ public class MainActivity extends BaseActivity {
 
     }
 
-    @OnClick(R.id.friend_circle)
-    public void onViewClicked() {
-        Intent intent = new Intent(MainActivity.this, FriendCircleActivity.class);
-        startActivity(intent);
+    @OnClick({R.id.friend_circle,R.id.screen_shot})
+    public void onClick(View view) {
+        Intent intent;
+        switch (view.getId()){
+            case R.id.friend_circle:
+                 intent = new Intent(MainActivity.this, FriendCircleActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.screen_shot:
+                 intent = new Intent(MainActivity.this, ScreenShotActivity.class);
+                startActivity(intent);
+                break;
+        }
+
     }
 
     @Override
@@ -68,4 +83,5 @@ public class MainActivity extends BaseActivity {
             finish();
         }
     }
+
 }

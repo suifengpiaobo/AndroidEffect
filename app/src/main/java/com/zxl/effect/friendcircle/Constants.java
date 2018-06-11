@@ -58,13 +58,13 @@ public class Constants {
             "http://www.zhlzw.com/UploadFiles/Article_UploadFiles/201204/20120412123911931.jpg",
             "http://pic10.nipic.com/20101020/5588264_195446417000_2.jpg",
             "http://pic23.nipic.com/20120814/5914324_155903179106_2.jpg",
-            "http://pic30.nipic.com/20130624/7447430_170550396000_2.jpg"
+            "http://pic30.nipic.com/20130624/7447430_170550396000_2.jpg",
 
 
-//            "http://www.zhlzw.com/UploadFiles/Article_UploadFiles/201210/2012102917583789.jpg",
-//            "http://pic9.nipic.com/20100916/5521709_153351042692_2.jpg",
-//            "http://pic28.photophoto.cn/20130809/0036036888631254_b.jpg",
-//            "http://pic25.photophoto.cn/20121117/0036036800515046_b.jpg",
-//            "http://pic.58pic.com/58pic/14/32/69/14X58PICcg5_1024.jpg"
+            "http://www.zhlzw.com/UploadFiles/Article_UploadFiles/201210/2012102917583789.jpg",
+            "http://pic9.nipic.com/20100916/5521709_153351042692_2.jpg",
+            "http://pic28.photophoto.cn/20130809/0036036888631254_b.jpg",
+            "http://pic25.photophoto.cn/20121117/0036036800515046_b.jpg",
+            "http://pic.58pic.com/58pic/14/32/69/14X58PICcg5_1024.jpg"
     };
 }

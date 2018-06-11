@@ -118,9 +118,7 @@ public class FriendCircleActivity extends BaseActivity implements SwipeRefreshLa
             friend.imageUrls = new ArrayList<>();
             for (int j=0;j<9;j++){
                 Random random = new Random();
-                url = Constants.IMAGE_URL[i*j];
-                Log.i(TAG,"---position--->>>"+random.nextInt(50));
-                Log.i(TAG,"---url--->>>"+url);
+                url = Constants.IMAGE_URL[random.nextInt(50)];
                 friend.imageUrls.add(url);
             }
             friends.add(friend);

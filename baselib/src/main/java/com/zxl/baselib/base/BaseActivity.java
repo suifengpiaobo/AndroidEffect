@@ -119,9 +119,10 @@ public abstract class BaseActivity<T extends BasePresenter> extends RxAppCompatA
         mSwipeBackHelper.swipeBackward();
     }
 
+
     @Override
-    protected void onStop() {
-        super.onStop();
+    protected void onDestroy() {
+        super.onDestroy();
         bind.unbind();
     }
 

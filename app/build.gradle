@@ -1,6 +1,19 @@
 apply plugin: 'com.android.application'
 def cfg = rootProject.ext.android
 
+//加载资源.在本地的 local.properties 文件设置了一些参数，从这里获取
+Properties properties = new Properties()
+InputStream inputStream = project.rootProject.file('local.properties').newDataInputStream();
+properties.load(inputStream)
+
+//repositories {
+//    maven { url "https://jitpack.io" }
+//}
+
+def releaseTime() {
+    return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("UTC"))
+}
+
 
 android {
     compileSdkVersion cfg.compileSdkVersion
@@ -14,11 +27,106 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
+        ndk {
+            abiFilters 'armeabi' //设置支持的SO库架构, 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
+        }
+
+//        signingConfigs signingConfigs.config
+        multiDexEnabled true
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    // 签名文件
+    signingConfigs {
+        config {
+            keyAlias 'effect'
+            keyPassword '123456'
+            storeFile file('../app/keystore/effect.jks')
+            storePassword '123456'
+        }
+    }
+
+    // 多渠道/多环境 的不同配置
+    productFlavors {
+        dev {
+            // 每个环境包名不同
+            applicationId "com.lyl.boon.dev"
+            // 动态添加 string.xml 字段；
+            // 注意，这里是添加，在 string.xml 不能有这个字段，会重名！！！
+            resValue "string", "app_name", "dev_effect"
+            resValue "bool", "isrRank", 'false'
+            // 动态修改 常量 字段
+            buildConfigField "String", "ENVIRONMENT", '"dev"'
+//            buildConfigField "String", "BUGLYAPPID", properties.getProperty('appIdMark')
+            // 修改 AndroidManifest.xml 里渠道变量
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "dev",
+                                    app_icon   : "@mipmap/ic_launcher"]
+        }
+        stage {
+            applicationId "com.lyl.boon.stage"
+
+            resValue "string", "app_name", "stage_effect"
+            resValue "bool", "isrRank", 'true'
+
+            buildConfigField "String", "ENVIRONMENT", '"stage"'
+//            buildConfigField "String", "BUGLYAPPID", properties.getProperty('appIdMark')
+
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "stage",
+                                    app_icon   : "@mipmap/ic_launcher"]
+        }
+        prod {
+            applicationId "com.lyl.boon"
+
+            resValue "string", "app_name", "effect"
+            resValue "bool", "isrRank", 'true'
+
+            buildConfigField "String", "ENVIRONMENT", '"prod"'
+//            buildConfigField "String", "BUGLYAPPID", properties.getProperty('appIdMark')
+
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "prod",
+                                    app_icon   : "@mipmap/ic_launcher"]
+        }
+    }
+
+    //移除lint检测的error
+    lintOptions {
+        abortOnError false
+    }
+
+    dexOptions {
+//        incremental true
+        preDexLibraries = false
+    }
+
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.config
+        }
+
+        release {
+            minifyEnabled false
+            zipAlignEnabled true
+            //移除无用的resource文件
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
+
+            // 批量打包
+            applicationVariants.all { variant ->
+                variant.outputs.each { output ->
+                    def outputFile = output.outputFile
+                    if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                        //输出apk名称为：渠道名_版本名_时间.apk
+                        def fileName = "${variant.productFlavors[0].name}_v${defaultConfig.versionName}_${releaseTime()}.apk"
+                        output.outputFile = new File(outputFile.parent, fileName)
+                    }
+                }
+            }
         }
     }
 }
@@ -27,6 +135,4 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
 
     compile project(':baselib')
-
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
 }

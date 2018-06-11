@@ -7,12 +7,32 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/friend_circle"
+    <ScrollView
         android:layout_width="match_parent"
-        android:gravity="center"
-        android:layout_height="50dp"
-        android:text="仿微信侧滑 图片查看"
-        />
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/friend_circle"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:layout_height="50dp"
+                android:text="仿微信侧滑 图片查看"
+                android:background="@color/base_B5B5B5"
+                />
+
+            <TextView
+                android:id="@+id/screen_shot"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:layout_height="50dp"
+                android:text="监听截屏"
+                android:background="@color/base_B5B5B5"
+                android:layout_marginTop="8dp"
+                />
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>
