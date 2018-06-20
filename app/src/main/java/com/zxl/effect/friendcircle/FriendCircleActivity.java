@@ -129,9 +129,11 @@ public class FriendCircleActivity extends BaseActivity implements SwipeRefreshLa
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                swpieRefreshLayout.setRefreshing(false);
+                if (swpieRefreshLayout != null){
+                    swpieRefreshLayout.setRefreshing(false);
+                }
             }
-        },2000);
+        },1000);
     }
 
     @Override
